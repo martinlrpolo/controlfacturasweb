@@ -1,0 +1,111 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Información de documento</h1>
+    </div>
+
+    <div class="row" *ngIf="factura != null">
+
+        <div class="card md-12 col-md-12">
+
+            <div class="card-body">
+
+                <div class="p-5" *ngIf="factura != null">
+
+                    <form class="user">
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>PDF</label>
+                                <button class="btn btn-danger btn-user btn-block" type="button"
+                                    (click)="verDocumento(factura.documento._id, 'pdf')">
+                                    <i class="fas fa-file-pdf fa-2x"></i>
+                                </button>
+                            </div>
+                            <div class="col-md-3">
+                                <label>XML</label>
+                                <button class="btn btn-primary btn-user btn-block" type="button"
+                                    (click)="verDocumento(factura.documento._id, 'xml')">
+                                    <i class="fas fa-code fa-2x"></i>
+                                </button>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Usuario</label>
+                                <input type="text" class="form-control form-control-user"
+                                    value="{{factura.usuario.nombre}}" readonly />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label>Fecha Envío</label>
+                                <input readonly type="text" class="form-control form-control-user"
+                                    value="{{factura.fechaHoraEnvio}}" />
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Fecha Acuse</label>
+                                <input readonly type="text" class="form-control form-control-user"
+                                    value="{{factura.fechaHoraAcuse}}" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label>Estado</label>
+                                <button *ngIf="factura.estado == null" class="btn btn-warning btn-user btn-block"
+                                    type="button">En espera</button>
+                                <button *ngIf="factura.estado == 'True'" class="btn btn-success btn-user btn-block"
+                                    type="button">Aceptado</button>
+                                <button *ngIf="factura.estado == 'False'" class="btn btn-danger btn-user btn-block"
+                                    type="button">Rechazado</button>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <label>Comentario</label>
+                                <textarea readonly class="form-control" value="{{factura.comentario}}"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" *ngIf="factura.estado == null">
+                            <div class="card md-12 col-md-12">
+                                <div class="card-body">
+                                    <h2 class="text-center">Acciones</h2>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <textarea name="comentario" [(ngModel)]="factura.comentario"
+                                                class="form-control" placeholder="Comentario...."></textarea>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row justify-content-center" *ngIf="factura.estado == null">
+                                        <div class="col-md-6">
+                                            <button (click)="actualizar('True')"
+                                                class="btn btn-success btn-user btn-block"
+                                                type="button">Aceptar</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button (click)="actualizar('False')"
+                                                class="btn btn-danger btn-user btn-block"
+                                                type="button">Rechazar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-3">
+                                <button type="button" routerLink="/documentocliente"
+                                    class="btn btn-primary btn-user btn-block">
+                                    Regresar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

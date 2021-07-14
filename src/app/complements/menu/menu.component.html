@@ -1,0 +1,94 @@
+    <!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-paste"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">DOCUMENTOS</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" routerLink="">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" *ngxPermissionsOnly="['ADMIN']">
+
+    <!-- Heading -->
+    <div class="sidebar-heading" *ngxPermissionsOnly="['ADMIN']">
+        Administración
+    </div>
+
+    <!-- Nav Item - Charts -->
+    <li class="nav-item" *ngxPermissionsOnly="['ADMIN']">
+        <a class="nav-link" routerLink="/usuario">
+            <i class="fas fa-users"></i>
+            <span>Usuarios</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" *ngxPermissionsOnly="['ADMIN']">
+
+    <!-- Heading -->
+    <div class="sidebar-heading" *ngxPermissionsOnly="['ADMIN']">
+        Documentación
+    </div>
+
+    <!-- Nav Item - Charts -->
+    <li class="nav-item" *ngxPermissionsOnly="['ADMIN']">
+        <a class="nav-link" routerLink="/enviocliente">
+            <i class="fas fa-building"></i>
+            <span>Envíos a clientes</span>
+        </a>
+    </li>
+
+    <li class="nav-item" *ngxPermissionsOnly="['ADMIN']">
+        <a class="nav-link" routerLink="/enviodian">
+            <i class="fas fa-store"></i>
+            <span>Envíos a DIAN</span>
+        </a>
+    </li>
+
+    <li class="nav-item" *ngxPermissionsOnly="['CLIENTE']">
+        <a class="nav-link" routerLink="/documentocliente">
+            <i class="fas fa-file"></i>
+            <span>Mis documentos</span>
+        </a>
+    </li>
+
+    <li class="nav-item" *ngxPermissionsOnly="['CLIENTE', 'ADMIN']">
+        <a class="nav-link" routerLink="/documentocliente">
+            <i class="fas fa-user"></i>
+            <span>Servicio al cliente</span>
+        </a>
+    </li>
+
+    <li class="nav-item" *ngxPermissionsOnly="['ADMIN']">
+        <a class="nav-link" routerLink="/configuracion">
+            <i class="fas fa-cog"></i>
+            <span>Configuración</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <!--
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+    -->
+
+</ul>
+<!-- End of Sidebar -->

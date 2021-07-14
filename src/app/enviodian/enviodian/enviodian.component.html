@@ -1,0 +1,75 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Envíos a DIAN</h1>
+    </div>
+
+    <div class="row">
+
+        <div class="card md-12 col-lg-12">
+            <div class="card-header">
+                Lista de envíos
+            </div>
+            <div class="card-body">
+
+                <div class="row" *ngIf="envios.length == 0">
+                    <div class="col-md-12 text-center">
+                        <h1>No se encontraron envíos</h1>
+                    </div>
+                </div>
+
+                <table class="table" *ngIf="envios.length > 0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Envío</th>
+                            <th scope="col">Acuse</th>
+                            <th scope="col"># Factura</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let e of envios  | paginate: { itemsPerPage: 10, currentPage: p }">
+                            <td>{{e.fechaHoraEnvio | date : 'yyyy-M-dd'}}</td>
+                            <td>{{e.fechaHoraAcuse | date : 'yyyy-M-dd'}}</td>
+                            <td>
+                                <p>{{e.documento?.numero}}</p>
+                            </td>
+                            <td>
+                                <div *ngIf=" e.estado==null" class="btn btn-warning"> En espera
+                                </div>
+                                <div *ngIf="e.estado == 'True'" class="btn btn-success"> Aceptado </div>
+                                <div *ngIf="e.estado == 'False'" class="btn btn-danger"> Rechazado </div>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-icon-split" routerLink="/enviodian/ver/{{e._id}}">
+                                    <span class="icon"><i class="fas fa-eye"></i></span>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-icon-split" (click)="eliminar(e._id)">
+                                    <span class="icon"><i class="fas fa-trash"></i></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="col-md-12 text-center">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--
+<a routerLink="/documento/agregar" class="float-button">
+    <i class="fas fa-paper-plane my-float"></i>
+</a>
+-->

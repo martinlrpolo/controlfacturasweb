@@ -1,0 +1,35 @@
+:host ::ng-deep{
+    
+    .float-button{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:40px;
+        right:40px;
+        background-color:#4e73df;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+        box-shadow: 2px 2px 3px #999;
+    }
+    
+    .my-float{
+        margin-top:22px;
+    }
+
+    select{
+        padding: 0 !important;
+        height: 50px !important;
+        padding-left: 10px !important;
+    }
+
+    .card-header{
+        margin-left: -12px;
+        margin-right: -12px;
+    }
+
+    .sidebar{
+        height: 100%;
+    }
+}
+
